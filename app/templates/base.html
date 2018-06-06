@@ -1,0 +1,35 @@
+<html>
+<head>
+    {% if title %}
+        <title> {{ title }} | NovelWrite</title>
+    {% else %}
+        <title>NovelWrite</title>
+    {% endif %}
+</head>
+<body>
+<div class="navbar">
+    <a href="{{ url_for('index') }}">NovelWrite</a>
+    {% if current_user.is_anonymous %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('register') }}">Sign Up</a>
+    {% else %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+    {% endif %}
+</div>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+<hr>
+{% block content %}{% endblock %}
+<hr>
+<div class="footer">
+    <h1>NovelWrite</h1>
+</div>
+</body>
+</html>

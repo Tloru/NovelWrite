@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="section">
+        <h1>Story</h1>
+    </div>
+    {% for story in stories %}
+        <div class="card">
+            <h2>{{ story.title }}</h2>
+            <p>{{ story.author }}</p>
+            <p>{{ story.description }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if current_user.is_anonymous %}
+        <div class="section">
+            <h1>NovelWrite</h1>
+        </div>
+    {% endif %}
+    {% for story in stories %}
+        <div class="card">
+            <h2>{{ story.title }}</h2>
+            <p>{{ story.author }}</p>
+            <p>{{ story.description }}</p>
+        </div>
+    {% endfor %}
+    {% if current_user.is_anonymous %}
+        <div class="section">
+            <h1>Like what you see?</h1>
+            <p><a href="{{ url_for('register') }}">Sign Up</a></p>
+        </div>
+    {% endif %}
+{% endblock %}
